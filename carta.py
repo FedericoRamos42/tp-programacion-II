@@ -39,3 +39,6 @@ class Carta():
     
     def subir_nivel(self) -> None:
         pass
+    
+    def __str__(self) -> str:
+        return f"Nombre: {self.nombre}"

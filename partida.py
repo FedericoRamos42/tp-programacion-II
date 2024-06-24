@@ -4,6 +4,7 @@ class Partida():
     def __init__(self, jugador_1:Jugador, jugador_2:Jugador) -> None:
         self.__jugador_1 = jugador_1
         self.__jugador_2 = jugador_2
+        
         #tiempo de partida
     
     @property
