@@ -32,7 +32,6 @@ class Partida():
     
     def iniciar_partida(self) -> None:
         # volver las torres al 100% de vida
-        print("La partida ha comenzado!")
         while self.__tiempo_partida > 0:
             self.simular_turno()
             time.sleep(1)
@@ -41,15 +40,14 @@ class Partida():
                 break
         self.mostrar_resultado()
 
-    def simular_turno(self) -> None:
+    def simular_turno(self) -> None: # reiniciar la cida de la torres// hacer que ataquen de uno a la vez// filtrar cuando cae.
         dano_random = [40, 300, 24, 100, 53, 200]
         for torre in self.__jugador_1.torres:
             if not torre.esta_destruida():
                 objetivo = random.choice(self.__jugador_2.torres)
                 dano_torre_random_1 = random.choice(dano_random)
                 objetivo.recibir_daño(dano_torre_random_1)
-                objetivo.recibir_daño(random.choice(dano_random))
-                print(f"{self.__jugador_1.nombre} ataca con {torre.tipo_torre} causando {dano_torre_random_1} de daño a una torre de {self.__jugador_2.nombre} que ahora tiene {objetivo.vida_torre} de vida")
+                print(f"{self.__jugador_1.nombre} ataca a {self.__jugador_2.nombre} y le causa un daño de {dano_torre_random_1} a una torre de {self.__jugador_2.nombre} que ahora tiene {objetivo.vida_torre} de vida")
                 
         # Ataques del jugador 2 (computadora)
         for torre in self.__jugador_2.torres:
@@ -57,7 +55,7 @@ class Partida():
                 objetivo = random.choice(self.__jugador_1.torres)
                 dano_torre_random_2 = random.choice(dano_random)
                 objetivo.recibir_daño(dano_torre_random_2)
-                print(f"{self.__jugador_2.nombre} ataca con {torre.tipo_torre} causando {dano_torre_random_2} de daño a una torre de {self.__jugador_1.nombre} que ahora tiene {objetivo.vida_torre} de vida")
+                print(f"{self.__jugador_2.nombre} ataca a {self.__jugador_1.nombre} y le causa un daño de {dano_torre_random_2} a una torre de {self.__jugador_1.nombre} que ahora tiene {objetivo.vida_torre} de vida")
         
     def partida_terminada(self) -> bool:
     # Verificar si todas las torres del jugador 1 están destruidas

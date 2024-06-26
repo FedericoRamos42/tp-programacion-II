@@ -33,7 +33,7 @@ jugadores = [
 ]
 
 
-usuario_2 = Jugador("jose", "123", 2, 4, 200)
+usuario_2 = Jugador("federico", "123", 2, 4, 200)
 
 cartas_2 = [
     Carta("Bruja", "Tropa", 5, 1),

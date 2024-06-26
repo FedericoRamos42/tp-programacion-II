@@ -3,8 +3,10 @@ from carta import Carta
 from torre import Torre
 # from datos import cartas
 class Jugador():
-    def __init__(self, nombre:str, contrasena:str, nivel:int, cantidad_trofeo:int, cantidad_monedas:int):
-        self.__nombre = nombre
+    
+    __users = set()
+    def __init__(self, nombre:str, contrasena:str, nivel:int = 1, cantidad_trofeo:int = 0, cantidad_monedas:int = 500):
+        self.__nombre = Jugador.__validacion_usuario(nombre)
         self.__contrasena = contrasena
         self.__nivel = nivel
         self.__cantidad_trofeo = cantidad_trofeo
@@ -63,6 +65,14 @@ class Jugador():
     @mazo.setter
     def mazo(self, nuevo_mazo:Mazo) -> None:
         self.__mazo = nuevo_mazo
+        
+    @classmethod
+    def __validacion_usuario(cls, nombre:str) -> str:
+        if nombre in cls.__users:
+            raise Exception("El nombre de usuario ya existe. Intente con otro.")
+        cls.__users.add(nombre)
+        return nombre
+        
     
     def elegir_mazo(self,carta:Carta) -> bool:
         if not carta in self.mazo.cartas:

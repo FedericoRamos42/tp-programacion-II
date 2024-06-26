@@ -1,43 +1,8 @@
 from jugador import Jugador
 from datos import *
-from carta import Carta
 from partida import Partida
-
-def login() -> Jugador:
-    nombre_de_usuario = input("Ingrese su nombre: ")
-    contrasena = input("Ingrese su contraseña: ")
-    
-    for usuario in jugadores:
-        if usuario.nombre == nombre_de_usuario and usuario.contrasena == contrasena:
-            print(f"Bienvenido {nombre_de_usuario}")
-            return usuario
-        else:
-            print(f"Usuario {nombre_de_usuario} no encontrado")
-            return None #hace que el while sea falso.
-    
-    
-def menu() -> None:
-    print("1. Iniciar Sesion")
-    print("2. Salir")
-    
-def mostrar_menu():
-    print("1. Crear mazo")
-    print("2. Editar mazo")
-    print("3. Iniciar Partida")
-    print("4. Cerrar Sesion")
-
-def menu_mazo():
-    print("1. Agregar carta")
-    print("2. Eliminar carta")
-    print("3. Subir nivel")
-    print("4. Salir")
-
-while True:
-    menu()
-    opcion = int(input("Seleccione una opción: "))
-    if opcion == 1:
-        usuario = login()
-        while usuario:
+def menu_usuario_logeado(usuario:Jugador) -> None:
+    while usuario:
             mostrar_menu() # Sub menu para cuando el usuario ya esta logueado
             opcion = int(input("Seleccione una opción: "))
             if opcion == 1: # Jugador arma su mazo
@@ -89,13 +54,62 @@ while True:
                         carta_nivel_seleccionada = usuario.mazo.cartas[opt_carta]
                         print(usuario.subir_nivel(carta_nivel_seleccionada)) # llama a al metodo y muestre el return correspondiente
                     elif opcion == 4:
+                        print("Cerrando edicion de mazo")
                         break
             elif opcion == 3:
                partida = Partida(usuario, usuario_2)
+               print(f"{usuario.nombre} inicia la partida contra {usuario_2.nombre}.")
                partida.iniciar_partida()
             elif opcion == 4:
-               print("Saliendo...")
+               print("Cerrando de sesión")
                break
+def login() -> Jugador:
+    nombre_de_usuario = input("Ingrese su nombre: ")
+    contrasena = input("Ingrese su contraseña: ")
+    
+    for usuario in jugadores:
+        if usuario.nombre == nombre_de_usuario and usuario.contrasena == contrasena:
+            print(f"Bienvenido {nombre_de_usuario}")
+            return usuario
+        else:
+            print(f"Usuario {nombre_de_usuario} no encontrado")
+            return None #hace que el while sea falso.
+    
+def registrarse() -> Jugador:
+    nombre_de_usuario = input("Ingrese su nombre: ")
+    contrasena = input("Ingrese su contraseña: ")
+    jugador = Jugador(nombre_de_usuario, contrasena)
+    jugadores.append(jugador)
+    print(f"Bienvenido {nombre_de_usuario}")
+    return jugador
+    
+def menu() -> None:
+    print("1. Iniciar Sesion")
+    print("2. Registrarse")
+    print("3. Salir")
+    
+    
+def mostrar_menu():
+    print("1. Crear mazo")
+    print("2. Editar mazo")
+    print("3. Iniciar Partida")
+    print("4. Cerrar Sesion")
+
+def menu_mazo():
+    print("1. Agregar carta")
+    print("2. Eliminar carta")
+    print("3. Subir nivel")
+    print("4. Salir")
+
+while True:
+    menu()
+    opcion = int(input("Seleccione una opción: "))
+    if opcion == 1:
+        usuario = login()
+        menu_usuario_logeado(usuario)
     elif opcion == 2:
+        usuario = registrarse()
+        menu_usuario_logeado(usuario)
+    elif opcion == 3:
         print("Saliendo...")
         break
