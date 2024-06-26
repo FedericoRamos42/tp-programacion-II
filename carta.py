@@ -36,9 +36,6 @@ class Carta():
     @nivel.setter
     def nivel(self, nuevo_nivel: int) -> None:
         self.__nivel = nuevo_nivel
-    
-    def subir_nivel(self) -> None:
-        pass
-    
+
     def __str__(self) -> str:
         return f"Nombre: {self.nombre}"

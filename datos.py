@@ -23,11 +23,28 @@ cartas = [
 ]
 
 jugadores = [
-   Jugador("joaquin", "123", 2, 4),
-   Jugador("juan", "123", 2, 4),
-   Jugador("pedro", "123", 2, 4),
-   Jugador("maria", "123", 2, 4),
-   Jugador("jose", "123", 2, 4),
-   Jugador("ana", "123", 2, 4),
-   Jugador("luis", "123", 2, 4),
+   Jugador("joaquin", "123", 2, 4, 500),
+   Jugador("juan", "123", 2, 4, 400),
+   Jugador("pedro", "123", 2, 4, 600),
+   Jugador("maria", "123", 2, 4, 300),
+   Jugador("jose", "123", 2, 4, 200),
+   Jugador("ana", "123", 2, 4, 1200),
+   Jugador("luis", "123", 2, 4, 400),
 ]
+
+
+usuario_2 = Jugador("jose", "123", 2, 4, 200)
+
+cartas_2 = [
+    Carta("Bruja", "Tropa", 5, 1),
+    Carta("Montapuercos", "Tropa", 4, 1),
+    Carta("Esqueleto Gigante", "Tropa", 6, 1),
+    Carta("Barril de Duendes", "Hechizo", 3, 1),
+    Carta("Valquiria", "Tropa", 4, 1),
+    Carta("Tesla", "Estructura", 4, 1),
+    Carta("Cañón", "Estructura", 3, 1),
+    Carta("Lanzarrocas", "Tropa", 5, 1),
+]
+
+for carta in cartas_2 :
+    usuario_2.mazo.add_carta(carta)
