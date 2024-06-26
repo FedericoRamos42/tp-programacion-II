@@ -17,6 +17,6 @@ class Mazo():
         else: 
             print(f"La carta {carta} no se encuentra en el mazo")
     
-    def str(self) -> str:
+    def __str__(self) -> str:
         return "\n".join(str(carta) for carta in self.cartas)
     

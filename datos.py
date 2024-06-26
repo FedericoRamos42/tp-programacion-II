@@ -1,5 +1,5 @@
 from carta import Carta
-
+from jugador import Jugador
 cartas = [
     Carta("Caballero", "Tropa", 3, 1),
     Carta("Arqueras", "Tropa", 3, 1),
@@ -20,16 +20,14 @@ cartas = [
     Carta("Tesla", "Estructura", 4, 1),
     Carta("Cañón", "Estructura", 3, 1),
     Carta("Lanzarrocas", "Tropa", 5, 1),
-    Carta("Verdugo", "Tropa", 5, 1),
-    Carta("Leñador", "Tropa", 4, 1),
-    Carta("Tornado", "Hechizo", 3, 1),
-    Carta("Chispitas", "Tropa", 6, 1),
-    Carta("Mago", "Tropa", 5, 1),
-    Carta("Minero", "Tropa", 3, 1),
-    Carta("Rayo", "Hechizo", 6, 1),
-    Carta("Globo Bombástico", "Tropa", 5, 1),
-    Carta("Mago Eléctrico", "Tropa", 4, 1),
-    Carta("Dragón Infernal", "Tropa", 4, 1),
-    Carta("Megacaballero", "Tropa", 7, 1),
-    Carta("Bandida", "Tropa", 3, 1)
+]
+
+jugadores = [
+   Jugador("joaquin", "123", 2, 4),
+   Jugador("juan", "123", 2, 4),
+   Jugador("pedro", "123", 2, 4),
+   Jugador("maria", "123", 2, 4),
+   Jugador("jose", "123", 2, 4),
+   Jugador("ana", "123", 2, 4),
+   Jugador("luis", "123", 2, 4),
 ]
