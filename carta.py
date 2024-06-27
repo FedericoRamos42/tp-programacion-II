@@ -1,8 +1,7 @@
 class Carta():
-    def __init__(self, nombre:str, tipo_carta:str, valor_elixir:int, nivel:int) -> None:
+    def __init__(self, nombre:str, tipo_carta:str, nivel:int) -> None:
         self.__nombre = nombre
         self.__tipo_carta = tipo_carta
-        self.__valor_elixir = valor_elixir
         self.__nivel = nivel
         
     @property
@@ -20,14 +19,6 @@ class Carta():
     @tipo_carta.setter
     def tipo_carta(self, nuevo_tipo_carta: str) -> None:
         self.__tipo_carta = nuevo_tipo_carta
-    
-    @property
-    def valor_elixir(self) -> int:
-        return self.__valor_elixir
-    
-    @valor_elixir.setter
-    def valor_elixir(self, nuevo_valor_elixir: int) -> None:
-        self.__valor_elixir = nuevo_valor_elixir
     
     @property
     def nivel(self) -> int:

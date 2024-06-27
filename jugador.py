@@ -13,8 +13,8 @@ class Jugador():
         self.__cantidad_monedas = cantidad_monedas
         self.__mazo = Mazo()
         self.__torres = [
-            Torre("Escolta", 1000),
-            Torre("Escolta", 1000),
+            Torre("Escolta 1", 1000),
+            Torre("Escolta 2", 1000),
             Torre("Principal", 2000)
         ]
     
