@@ -1,8 +1,9 @@
 from jugador import Jugador
 from datos import *
 from partida import Partida
+
 def menu_usuario_logeado(usuario:Jugador) -> None:
-    while usuario:
+    while usuario: #devuelve true si el usuario existe, sino es false
             mostrar_menu() # Sub menu para cuando el usuario ya esta logueado
             opcion = int(input("Seleccione una opción: "))
             if opcion == 1: # Jugador arma su mazo
@@ -63,25 +64,27 @@ def menu_usuario_logeado(usuario:Jugador) -> None:
             elif opcion == 4:
                print("Cerrando de sesión")
                break
-def login() -> Jugador:
+           
+def login() -> Jugador: #revisar por que no encuentra a los usuarios registrados
     nombre_de_usuario = input("Ingrese su nombre: ")
     contrasena = input("Ingrese su contraseña: ")
-    
     for usuario in jugadores:
         if usuario.nombre == nombre_de_usuario and usuario.contrasena == contrasena:
             print(f"Bienvenido {nombre_de_usuario}")
             return usuario
-        else:
-            print(f"Usuario {nombre_de_usuario} no encontrado")
-            return None #hace que el while sea falso.
+    print(f"Usuario {nombre_de_usuario} no encontrado.")
     
-def registrarse() -> Jugador:
-    nombre_de_usuario = input("Ingrese su nombre: ")
-    contrasena = input("Ingrese su contraseña: ")
-    jugador = Jugador(nombre_de_usuario, contrasena)
-    jugadores.append(jugador)
-    print(f"Bienvenido {nombre_de_usuario}")
-    return jugador
+def registrarse():
+    while True:
+        try:
+            nombre_de_usuario = input("Ingrese un nombre de usuario: ")
+            contrasena = input("Ingrese una contraseña: ")
+            jugador = Jugador(nombre_de_usuario, contrasena)
+            jugadores.append(jugador)
+            print(f"Usuario {nombre_de_usuario} registrado con éxito.")
+            return jugador
+        except Exception as error:
+            print(error)
     
 def menu() -> None:
     print("1. Iniciar Sesion")

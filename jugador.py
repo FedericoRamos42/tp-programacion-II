@@ -72,7 +72,7 @@ class Jugador():
             raise Exception("El nombre de usuario ya existe. Intente con otro.")
         cls.__users.add(nombre)
         return nombre
-        
+    
     
     def elegir_mazo(self,carta:Carta) -> bool:
         if not carta in self.mazo.cartas:
@@ -112,5 +112,3 @@ class Jugador():
         else:
             print("Selección no válida. Intente de nuevo.")
             return None
-    
-    
