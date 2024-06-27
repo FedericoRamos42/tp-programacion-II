@@ -42,7 +42,7 @@ class Partida():
     def simular_turno(self) -> None:
         dano_random = [40, 300, 24, 100, 53, 200]
         
-        torres_atacantes_jugador_1 = [torre for torre in self.__jugador_1.torres if not torre.esta_destruida()] #para no atacar torre con 0 de vida
+        torres_atacantes_jugador_1 = [torre for torre in self.__jugador_1.torres if not torre.esta_destruida()]
         torres_objetivo_jugador_2 = [torre for torre in self.__jugador_2.torres if not torre.esta_destruida()]
         
         if torres_atacantes_jugador_1 and torres_objetivo_jugador_2:
@@ -63,13 +63,13 @@ class Partida():
             print(f"{self.__jugador_2.nombre} ataca la torre {objetivo_1.tipo_torre} con la carta {carta_azar_2} y le causa un daño de {dano_torre_random_2} a una torre, que ahora tiene {objetivo_1.vida_torre} de vida")
         
     def partida_terminada(self) -> bool:
-        torres_destruidas_jugador_1 = True
+        torres_destruidas_jugador_1 = True #simula jugador logueado
         for torre in self.__jugador_1.torres:
             if not torre.esta_destruida():
                 torres_destruidas_jugador_1 = False
                 break
 
-        torres_destruidas_jugador_2 = True
+        torres_destruidas_jugador_2 = True # simula jugador por computadora
         for torre in self.__jugador_2.torres:
             if not torre.esta_destruida():
                 torres_destruidas_jugador_2 = False

@@ -15,23 +15,23 @@ def menu_usuario_logeado(usuario:Jugador) -> None:
     while usuario: #devuelve true si el usuario existe, sino es false
             mostrar_menu() # Sub menu para cuando el usuario ya esta logueado
             try:
-                opcion = int(input("Seleccione una opción: ")) # Añadimos try-except para manejar errores de entrada
+                opcion = int(input("Seleccione una opción: "))
             except ValueError:
                 print("Entrada no válida. Por favor ingrese un número.")
-                continue # Volver al principio del bucle
+                continue
             linea()
             if opcion == 1: # Jugador arma su mazo
                 print(f"{usuario.nombre}, selecciona tus cartas para el mazo.")
                 while len(usuario.mazo.cartas) < 8: #mostrar mensaje cuando el mazo esta completo
                     linea()
                     print("Cartas disponibles:")
-                    mostrar_cartas() # cartas en database
+                    mostrar_cartas() # cartas guardadas en datos.py
                     try:
                         seleccion = int(input("Seleccione el número de la carta que desea agregar: ")) - 1
                     except ValueError:
                         print("Entrada no válida. Por favor ingrese un número.")
                         continue
-                    if 0 <= seleccion < len(cartas): # si esta entra las opciones la guarda, sino muestra mensaje
+                    if 0 <= seleccion < len(cartas): # si esta entre las opciones la guarda, sino muestra mensaje
                         carta_elegida = cartas[seleccion]
                         if usuario.elegir_mazo(carta_elegida):
                            print(f"{usuario.nombre} ha agregado {carta_elegida.nombre} al mazo.")
@@ -40,7 +40,7 @@ def menu_usuario_logeado(usuario:Jugador) -> None:
                     else:
                         print("Selección no válida. Intente de nuevo.")
             elif opcion == 2: # editar mazo
-                while True: # el while es para que no salga del menu cuando ya realiza una accion
+                while True:
                     linea()
                     print('Mazo de cartas: ')
                     for i, carta in enumerate(usuario.mazo.cartas, 1):
@@ -48,7 +48,7 @@ def menu_usuario_logeado(usuario:Jugador) -> None:
                     linea()
                     menu_mazo()
                     try:
-                        opcion_mazo = int(input("Seleccione una opción: ")) # Cambiamos el nombre de la variable para evitar conflictos
+                        opcion_mazo = int(input("Seleccione una opción: "))
                     except ValueError:
                         print("Entrada no válida. Por favor ingrese un número.")
                         continue
@@ -65,15 +65,15 @@ def menu_usuario_logeado(usuario:Jugador) -> None:
                             print('Se agrego la carta correctamente')
                         else:
                             print('Antes de agregar una carta debe quitar una.')
-                    elif opcion_mazo == 2: # el mazo debe tener al menos una carta para poder eliminar una carta
-                        if validar_mazo(usuario):
+                    elif opcion_mazo == 2:
+                        if validar_mazo(usuario): # el mazo debe tener al menos una carta para poder eliminar una carta
                             for i, carta in enumerate(usuario.mazo.cartas, 1):
                                 print(f"{i}. {carta}")
                             try:
                                 seleccion = int(input("Seleccione el número de la carta que desea quitar: ")) - 1
                             except ValueError:
                                 print("Entrada no válida. Por favor ingrese un número.")
-                                continue ### ver validacion cartas seleccionada
+                                continue
                             carta_seleccionada = usuario.mazo.cartas[seleccion]
                             usuario.mazo.remove_carta(carta_seleccionada)
                             print('Se quito la carta correctamente')
@@ -88,7 +88,7 @@ def menu_usuario_logeado(usuario:Jugador) -> None:
                             for j, valor in enumerate (valor_nivel, 1):
                                 print(f'Nivel {j} - Costo: {valor}')
                             linea()
-                            for i, carta in enumerate(usuario.mazo.cartas, 1): #pasar a una funcion
+                            for i, carta in enumerate(usuario.mazo.cartas, 1):
                                 print(f"{i}. {carta} - Nivel: {carta.nivel}")
                             try:
                                 opt_carta = int(input("Seleccione la carta que desea subir de nivel:")) - 1
@@ -98,7 +98,7 @@ def menu_usuario_logeado(usuario:Jugador) -> None:
                             carta_nivel_seleccionada = usuario.mazo.cartas[opt_carta]
                             linea()
                         
-                            print(usuario.subir_nivel(carta_nivel_seleccionada)) # llama a al metodo y muestre el return correspondiente
+                            print(usuario.subir_nivel(carta_nivel_seleccionada))
                             linea()
                             print(f'La cantidad actual de monedas es: {usuario.cantidad_monedas}')
                         else:
@@ -123,7 +123,7 @@ def validar_mazo(usuario: Jugador) -> bool:
     else:
         return False         
 
-def login() -> Jugador: #revisar por que no encuentra a los usuarios registrados
+def login() -> Jugador:
     nombre_de_usuario = input("Ingrese su nombre: ")
     contrasena = input("Ingrese su contraseña: ")
     for usuario in jugadores:
@@ -173,7 +173,7 @@ def menu_mazo():
 while True:
     menu()
     try:
-        opcion = int(input("Seleccione una opción: ")) # Añadimos try-except para manejar errores de entrada
+        opcion = int(input("Seleccione una opción: "))
     except ValueError:
         print("Entrada no válida. Por favor ingrese un número.")
         continue

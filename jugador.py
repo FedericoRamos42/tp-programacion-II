@@ -1,7 +1,6 @@
 from mazo import Mazo
 from carta import Carta
 from torre import Torre
-# from datos import cartas
 class Jugador():
     
     __users = set()
@@ -93,22 +92,3 @@ class Jugador():
                 return f"Carta {carta.nombre} subió a nivel {carta.nivel}"
         else:
             return "Ya tienes el nivel máximo de la carta"
-        
-        
-    def jugar_carta(self) -> None: # agregar lo de elixr
-        if not self.mazo.cartas:
-            print(f"{self.nombre} no tiene cartas en su mazo para jugar.")
-            return None
-
-        print(f"{self.nombre}, selecciona una carta para jugar:")
-        for i, carta in enumerate(self.mazo.cartas):
-            print(f"{i + 1}. {carta}")
-
-        seleccion = int(input("Seleccione el número de la carta que desea jugar: ")) - 1
-        if 0 <= seleccion < len(self.mazo.cartas):
-            carta_jugada = self.mazo.cartas.pop(seleccion)
-            print(f"{self.nombre} ha jugado {carta_jugada.nombre}")
-            return carta_jugada
-        else:
-            print("Selección no válida. Intente de nuevo.")
-            return None
